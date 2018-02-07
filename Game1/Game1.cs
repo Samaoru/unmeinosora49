@@ -19,11 +19,20 @@ namespace Game1
         SpriteBatch mapBatch;
         Rectangle clientWindow;
         Rectangle mainFrame;
+        String saveFolder = "C:\\Users\\Chris\\Desktop\\";
+        States gameState;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferHeight = 768;
+            graphics.PreferredBackBufferWidth = 1366;
             Content.RootDirectory = "Content";
+        }
+
+        public enum States
+        {
+            Title, Play
         }
 
         /// <summary>
@@ -37,7 +46,7 @@ namespace Game1
             // TODO: Add your initialization logic here
             //ballPosition = new Vector2(graphics.PreferredBackBufferWidth / 2,graphics.PreferredBackBufferHeight / 2);
             ballPosition = new Vector2(10, 10);
-            ballSpeed = 100f;
+            ballSpeed = 400f;
 
             //this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / 30.0f);
 
@@ -67,6 +76,12 @@ namespace Game1
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+            Console.WriteLine("Exiting, final position:"+ballPosition.X+","+ballPosition.Y);
+        }
+
+        private void newGame()
+        {
+
         }
 
         /// <summary>
