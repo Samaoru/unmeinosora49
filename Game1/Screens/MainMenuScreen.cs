@@ -18,8 +18,6 @@ namespace GameStateManagementSample
     /// </summary>
     class MainMenuScreen : MenuScreen
     {
-        #region Initialization
-
 
         /// <summary>
         /// Constructor fills in the menu contents.
@@ -42,11 +40,6 @@ namespace GameStateManagementSample
             MenuEntries.Add(optionsMenuEntry);
             MenuEntries.Add(exitMenuEntry);
         }
-
-
-        #endregion
-
-        #region Handle Input
 
 
         /// <summary>
@@ -91,8 +84,5 @@ namespace GameStateManagementSample
         {
             ScreenManager.Game.Exit();
         }
-
-
-        #endregion
     }
 }

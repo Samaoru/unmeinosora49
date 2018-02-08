@@ -24,14 +24,9 @@ namespace GameStateManagementSample
     /// </summary>
     class BackgroundScreen : GameScreen
     {
-        #region Fields
 
         ContentManager content;
         Texture2D backgroundTexture;
-
-        #endregion
-
-        #region Initialization
 
 
         /// <summary>
@@ -72,11 +67,6 @@ namespace GameStateManagementSample
         }
 
 
-        #endregion
-
-        #region Update and Draw
-
-
         /// <summary>
         /// Updates the background screen. Unlike most screens, this should not
         /// transition off even if it has been covered by another screen: it is
@@ -108,7 +98,5 @@ namespace GameStateManagementSample
             spriteBatch.End();
         }
 
-
-        #endregion
     }
 }

@@ -20,8 +20,6 @@ namespace GameStateManagementSample
     /// </summary>
     class OptionsMenuScreen : MenuScreen
     {
-        #region Fields
-
         MenuEntry ungulateMenuEntry;
         MenuEntry languageMenuEntry;
         MenuEntry frobnicateMenuEntry;
@@ -42,10 +40,6 @@ namespace GameStateManagementSample
         static bool frobnicate = true;
 
         static int elf = 23;
-
-        #endregion
-
-        #region Initialization
 
 
         /// <summary>
@@ -90,12 +84,6 @@ namespace GameStateManagementSample
             frobnicateMenuEntry.Text = "Frobnicate: " + (frobnicate ? "on" : "off");
             elfMenuEntry.Text = "elf: " + elf;
         }
-
-
-        #endregion
-
-        #region Handle Input
-
 
         /// <summary>
         /// Event handler for when the Ungulate menu entry is selected.
@@ -144,6 +132,5 @@ namespace GameStateManagementSample
         }
 
 
-        #endregion
     }
 }

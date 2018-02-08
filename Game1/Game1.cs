@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using GameStateManagement;
+using GameStateManagementSample;
 
 namespace Game1
 {
@@ -21,13 +23,34 @@ namespace Game1
         Rectangle mainFrame;
         String saveFolder = "C:\\Users\\Chris\\Desktop\\";
         States gameState;
+        ScreenManager screenManager;
+        ScreenFactory screenFactory;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferHeight = 768;
-            graphics.PreferredBackBufferWidth = 1366;
+            //graphics.PreferredBackBufferHeight = 768;
+            //graphics.PreferredBackBufferWidth = 1366;
             Content.RootDirectory = "Content";
+
+            // Create the screen factory and add it to the Services
+            screenFactory = new ScreenFactory();
+            Services.AddService(typeof(IScreenFactory), screenFactory);
+
+            // Create the screen manager component.
+            screenManager = new ScreenManager(this);
+            Components.Add(screenManager);
+
+            // On Windows and Xbox we just add the initial screens
+            AddInitialScreens();
+        }
+
+        private void AddInitialScreens()
+        {
+            // Activate the first screens.
+            screenManager.AddScreen(new BackgroundScreen(), null);
+            screenManager.AddScreen(new MainMenuScreen(), null);
+
         }
 
         public enum States
@@ -49,7 +72,7 @@ namespace Game1
             ballSpeed = 400f;
 
             //this.TargetElapsedTime = TimeSpan.FromSeconds(1.0f / 30.0f);
-
+            this.IsMouseVisible = true;
             base.Initialize();
         }
 
@@ -84,6 +107,7 @@ namespace Game1
 
         }
 
+        /*
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -141,6 +165,7 @@ namespace Game1
 
             base.Update(gameTime);
         }
+        */
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -154,16 +179,16 @@ namespace Game1
 
 
             
-            mapBatch.Begin();
-            mapBatch.Draw(background, new Rectangle(0-mainFrame.X, 0, background.Width, background.Height), Color.White);
-            mapBatch.End();
+            //mapBatch.Begin();
+            //mapBatch.Draw(background, new Rectangle(0-mainFrame.X, 0, background.Width, background.Height), Color.White);
+            //mapBatch.End();
 
-            spriteBatch.Begin();
+            //spriteBatch.Begin();
             //spriteBatch.Draw(textureBall, new Vector2(10, 10), Color.White);
-            spriteBatch.Draw(textureBall,ballPosition, null,Color.White,0f,
+            //spriteBatch.Draw(textureBall,ballPosition, null,Color.White,0f,
                             //new Vector2(textureBall.Width / 2, textureBall.Height / 2),Vector2.One,SpriteEffects.None,0f);
-                            new Vector2(0,0), Vector2.One, SpriteEffects.None, 0f);
-            spriteBatch.End();
+            //                new Vector2(0,0), Vector2.One, SpriteEffects.None, 0f);
+            //spriteBatch.End();
 
             
 

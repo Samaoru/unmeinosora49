@@ -24,7 +24,6 @@ namespace GameStateManagementSample
     /// </summary>
     class MenuEntry
     {
-        #region Fields
 
         /// <summary>
         /// The text rendered for this entry.
@@ -44,11 +43,6 @@ namespace GameStateManagementSample
         /// each frame in Update.
         /// </summary>
         Vector2 position;
-
-        #endregion
-
-        #region Properties
-
 
         /// <summary>
         /// Gets or sets the text of this menu entry.
@@ -70,10 +64,6 @@ namespace GameStateManagementSample
         }
 
 
-        #endregion
-
-        #region Events
-
 
         /// <summary>
         /// Event raised when the menu entry is selected.
@@ -91,10 +81,6 @@ namespace GameStateManagementSample
         }
 
 
-        #endregion
-
-        #region Initialization
-
 
         /// <summary>
         /// Constructs a new menu entry with the specified text.
@@ -105,10 +91,6 @@ namespace GameStateManagementSample
         }
 
 
-        #endregion
-
-        #region Update and Draw
-
 
         /// <summary>
         /// Updates the menu entry.
@@ -117,9 +99,6 @@ namespace GameStateManagementSample
         {
             // there is no such thing as a selected item on Windows Phone, so we always
             // force isSelected to be false
-#if WINDOWS_PHONE
-            isSelected = false;
-#endif
 
             // When the menu selection changes, entries gradually fade between
             // their selected and deselected appearance, rather than instantly
@@ -140,9 +119,6 @@ namespace GameStateManagementSample
         {
             // there is no such thing as a selected item on Windows Phone, so we always
             // force isSelected to be false
-#if WINDOWS_PHONE
-            isSelected = false;
-#endif
 
             // Draw the selected entry in yellow, otherwise white.
             Color color = isSelected ? Color.Yellow : Color.White;
@@ -186,7 +162,5 @@ namespace GameStateManagementSample
             return (int)screen.ScreenManager.Font.MeasureString(Text).X;
         }
 
-
-        #endregion
     }
 }

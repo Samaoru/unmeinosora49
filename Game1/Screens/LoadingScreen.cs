@@ -32,16 +32,11 @@ namespace GameStateManagementSample
     /// </summary>
     class LoadingScreen : GameScreen
     {
-        #region Fields
 
         bool loadingIsSlow;
         bool otherScreensAreGone;
 
         GameScreen[] screensToLoad;
-
-        #endregion
-
-        #region Initialization
 
 
         /// <summary>
@@ -76,12 +71,6 @@ namespace GameStateManagementSample
 
             screenManager.AddScreen(loadingScreen, controllingPlayer);
         }
-
-
-        #endregion
-
-        #region Update and Draw
-
 
         /// <summary>
         /// Updates the loading screen.
@@ -158,6 +147,5 @@ namespace GameStateManagementSample
         }
 
 
-        #endregion
     }
 }

@@ -26,8 +26,6 @@ namespace GameStateManagementSample
     /// </summary>
     class GameplayScreen : GameScreen
     {
-        #region Fields
-
         ContentManager content;
         SpriteFont gameFont;
 
@@ -39,11 +37,6 @@ namespace GameStateManagementSample
         float pauseAlpha;
 
         InputAction pauseAction;
-
-        #endregion
-
-        #region Initialization
-
 
         /// <summary>
         /// Constructor.
@@ -83,22 +76,11 @@ namespace GameStateManagementSample
                 ScreenManager.Game.ResetElapsedTime();
             }
 
-#if WINDOWS_PHONE
-            if (Microsoft.Phone.Shell.PhoneApplicationService.Current.State.ContainsKey("PlayerPosition"))
-            {
-                playerPosition = (Vector2)Microsoft.Phone.Shell.PhoneApplicationService.Current.State["PlayerPosition"];
-                enemyPosition = (Vector2)Microsoft.Phone.Shell.PhoneApplicationService.Current.State["EnemyPosition"];
-            }
-#endif
         }
 
 
         public override void Deactivate()
         {
-#if WINDOWS_PHONE
-            Microsoft.Phone.Shell.PhoneApplicationService.Current.State["PlayerPosition"] = playerPosition;
-            Microsoft.Phone.Shell.PhoneApplicationService.Current.State["EnemyPosition"] = enemyPosition;
-#endif
 
             base.Deactivate();
         }
@@ -110,17 +92,7 @@ namespace GameStateManagementSample
         public override void Unload()
         {
             content.Unload();
-
-#if WINDOWS_PHONE
-            Microsoft.Phone.Shell.PhoneApplicationService.Current.State.Remove("PlayerPosition");
-            Microsoft.Phone.Shell.PhoneApplicationService.Current.State.Remove("EnemyPosition");
-#endif
         }
-
-
-        #endregion
-
-        #region Update and Draw
 
 
         /// <summary>
@@ -185,11 +157,7 @@ namespace GameStateManagementSample
             PlayerIndex player;
             if (pauseAction.Evaluate(input, ControllingPlayer, out player) || gamePadDisconnected)
             {
-#if WINDOWS_PHONE
-                ScreenManager.AddScreen(new PhonePauseScreen(), ControllingPlayer);
-#else
                 ScreenManager.AddScreen(new PauseMenuScreen(), ControllingPlayer);
-#endif
             }
             else
             {
@@ -258,8 +226,5 @@ namespace GameStateManagementSample
                 ScreenManager.FadeBackBufferToBlack(alpha);
             }
         }
-
-
-        #endregion
     }
 }

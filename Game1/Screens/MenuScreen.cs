@@ -25,8 +25,6 @@ namespace GameStateManagementSample
     /// </summary>
     abstract class MenuScreen : GameScreen
     {
-        #region Fields
-
         List<MenuEntry> menuEntries = new List<MenuEntry>();
         int selectedEntry = 0;
         string menuTitle;
@@ -35,11 +33,7 @@ namespace GameStateManagementSample
         InputAction menuDown;
         InputAction menuSelect;
         InputAction menuCancel;
-
-        #endregion
-
-        #region Properties
-
+        InputAction mouseClick;
 
         /// <summary>
         /// Gets the list of menu entries, so derived classes can add
@@ -49,12 +43,6 @@ namespace GameStateManagementSample
         {
             get { return menuEntries; }
         }
-
-
-        #endregion
-
-        #region Initialization
-
 
         /// <summary>
         /// Constructor.
@@ -82,12 +70,8 @@ namespace GameStateManagementSample
                 new Buttons[] { Buttons.B, Buttons.Back },
                 new Keys[] { Keys.Escape },
                 true);
+            
         }
-
-
-        #endregion
-
-        #region Handle Input
 
 
         /// <summary>
@@ -157,11 +141,6 @@ namespace GameStateManagementSample
         {
             OnCancel(e.PlayerIndex);
         }
-
-
-        #endregion
-
-        #region Update and Draw
 
 
         /// <summary>
@@ -261,7 +240,5 @@ namespace GameStateManagementSample
             spriteBatch.End();
         }
 
-
-        #endregion
     }
 }
